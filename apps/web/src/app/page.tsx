@@ -13,17 +13,21 @@ import {
   FileCode,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import CodeWalkthrough from "@/components/CodeWalkthrough";
 import TerminalShowcase from "@/components/TerminalShowcase";
 import AnimatedDiagram from "@/components/AnimatedDiagram";
 import FrameworkSection from "@/components/FrameworkSection";
 
 export default function LandingPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 },
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
   };
 
   const staggerContainer = {
@@ -47,7 +51,11 @@ export default function LandingPage() {
               animate={{ rotate: 0, scale: 1 }}
               className="w-10 h-10 flex items-center justify-center overflow-hidden"
             >
-              <img src="/logo.svg" alt="ZerithDB Logo" className="w-full h-full" />
+              <img
+                    src="/logo.svg"
+                    alt="ZerithDB Logo"
+                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                  />
             </motion.div>
             <span className="font-semibold text-xl tracking-tight">ZerithDB</span>
           </div>
@@ -72,6 +80,13 @@ export default function LandingPage() {
             </Link>
           </nav>
           <div className="flex items-center gap-4">
+            {/* MOBILE HAMBURGER */}
+            <button
+              className="md:hidden text-2xl focus:outline-none focus:ring-2 focus:ring-gray-300 rounded"
+              aria-label="Open menu"
+            >
+              ☰
+            </button>
             <a
               href="https://github.com/Zerith-Labs/ZerithDB"
               target="_blank"
@@ -104,6 +119,24 @@ export default function LandingPage() {
           </div>
         </div>
       </header>
+      {/* MOBILE MENU */}
+      {menuOpen && (
+          <div className="md:hidden fixed inset-0 top-16 bg-white z-50 flex flex-col p-6 gap-4 text-sm shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+          <button
+            className="self-end text-2xl mb-4"
+            onClick={() => setMenuOpen(false)}
+          >
+            ✕
+          </button>
+          <Link href="/docs" onClick={() => setMenuOpen(false)}>Docs</Link>
+          <Link href="#features" onClick={() => setMenuOpen(false)}>Features</Link>
+          <Link href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</Link>
+          <Link href="#compare" onClick={() => setMenuOpen(false)}>Compare</Link>
+          <Link href="/playground" className="text-blue-600 font-semibold" onClick={() => setMenuOpen(false)}>
+            Playground
+          </Link>
+        </div>
+      )}
 
       {/* ── 1. HERO SECTION ── */}
       <section className="relative pt-32 pb-20 px-6 max-w-6xl mx-auto text-center">
@@ -132,13 +165,13 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance leading-tight text-gray-900">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-tight text-gray-900 break-words px-2 sm:px-0">
             Build full-stack apps with <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
               ZERO backend.
             </span>
           </h1>
-          <p className="mt-6 text-xl text-gray-500 max-w-2xl mx-auto text-balance">
+          <p className="mt-6 text-lg sm:text-xl text-gray-500 max-w-full sm:max-w-2xl mx-auto">
             The browser is the server. Local-first, peer-to-peer, CRDT-powered database platform.
             Replace your backend, database, and auth system entirely.
           </p>
@@ -195,7 +228,9 @@ export default function LandingPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <FrameworkSection />
+          <div className="w-full">
+            <FrameworkSection />
+          </div>
         </motion.div>
 
         {/* Hero Code Snippet / Terminal Showcase */}
@@ -205,7 +240,9 @@ export default function LandingPage() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mt-16 mx-auto max-w-4xl text-left"
         >
-          <TerminalShowcase />
+          <div className="w-full overflow-x-auto">
+            <TerminalShowcase />
+          </div>
         </motion.div>
       </section>
 
@@ -247,7 +284,7 @@ export default function LandingPage() {
       {/* ── INTERACTIVE CODE SECTION ── */}
       <section className="py-24 px-6 bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="mb-12 md:text-center max-w-3xl mx-auto">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Developer Experience First
             </h2>
@@ -269,7 +306,7 @@ export default function LandingPage() {
       {/* ── 3. CORE FEATURES ── */}
       <section id="features" className="py-24 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="mb-16 md:text-center max-w-3xl mx-auto">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Everything you need. Nothing you don&apos;t.
             </h2>
@@ -284,7 +321,7 @@ export default function LandingPage() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
           >
             {[
               {
@@ -337,7 +374,7 @@ export default function LandingPage() {
       {/* ── 4. HOW IT WORKS / DIAGRAM ── */}
       <section id="how-it-works" className="py-24 px-6 bg-white border-y border-gray-200/50">
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-16">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">How it works</h2>
             <p className="mt-4 text-gray-500 text-lg">
               A simple, powerful data flow entirely in the browser.
@@ -350,7 +387,9 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <AnimatedDiagram />
+            <div className="w-full max-w-full overflow-x-auto">
+              <AnimatedDiagram />
+            </div>
           </motion.div>
 
           <motion.div
@@ -396,7 +435,7 @@ export default function LandingPage() {
       {/* ── 5. PERFORMANCE BENCHMARKS ── */}
       <section className="py-24 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <motion.div {...fadeInUp} className="mb-12 text-center">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Unbeatable Latency
             </h2>
@@ -477,7 +516,7 @@ export default function LandingPage() {
       {/* ── 6. COMPARISON SECTION ── */}
       <section id="compare" className="py-24 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-16">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">
               The Modern Data Layer
             </h2>
@@ -558,7 +597,7 @@ export default function LandingPage() {
       {/* ── 7. USE CASES ── */}
       <section id="use-cases" className="py-24 px-6 bg-white border-t border-gray-100">
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="mb-16 md:text-center max-w-2xl mx-auto">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Built for the next generation of apps
             </h2>
@@ -628,7 +667,7 @@ export default function LandingPage() {
           <p className="text-xl text-gray-500 mb-10">
             Open source. Developer first. Ready for production.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="group flex items-center gap-2 bg-black text-white px-6 py-4 sm:py-3.5 rounded-xl font-medium text-base w-full sm:w-auto justify-center">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -671,7 +710,11 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 flex items-center justify-center">
-              <img src="/logo.svg" alt="ZerithDB Logo" className="w-full h-full" />
+              <img
+                    src="/logo.svg"
+                    alt="ZerithDB Logo"
+                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                  />
             </div>
             <span className="font-semibold text-gray-900 text-lg">ZerithDB</span>
           </div>
