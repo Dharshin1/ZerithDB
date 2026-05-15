@@ -52,10 +52,10 @@ export default function LandingPage() {
               className="w-10 h-10 flex items-center justify-center overflow-hidden"
             >
               <img
-                    src="/logo.svg"
-                    alt="ZerithDB Logo"
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                  />
+                src="/logo.svg"
+                alt="ZerithDB Logo"
+                className="w-8 h-8 md:w-10 md:h-10 object-contain"
+              />
             </motion.div>
             <span className="font-semibold text-xl tracking-tight">ZerithDB</span>
           </div>
@@ -121,18 +121,27 @@ export default function LandingPage() {
       </header>
       {/* MOBILE MENU */}
       {menuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 bg-white z-50 flex flex-col p-6 gap-4 text-sm shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
-          <button
-            className="self-end text-2xl mb-4"
-            onClick={() => setMenuOpen(false)}
-          >
+        <div className="md:hidden fixed inset-0 top-16 bg-white z-50 flex flex-col p-6 gap-4 text-sm shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+          <button className="self-end text-2xl mb-4" onClick={() => setMenuOpen(false)}>
             ✕
           </button>
-          <Link href="/docs" onClick={() => setMenuOpen(false)}>Docs</Link>
-          <Link href="#features" onClick={() => setMenuOpen(false)}>Features</Link>
-          <Link href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</Link>
-          <Link href="#compare" onClick={() => setMenuOpen(false)}>Compare</Link>
-          <Link href="/playground" className="text-blue-600 font-semibold" onClick={() => setMenuOpen(false)}>
+          <Link href="/docs" onClick={() => setMenuOpen(false)}>
+            Docs
+          </Link>
+          <Link href="#features" onClick={() => setMenuOpen(false)}>
+            Features
+          </Link>
+          <Link href="#how-it-works" onClick={() => setMenuOpen(false)}>
+            How it works
+          </Link>
+          <Link href="#compare" onClick={() => setMenuOpen(false)}>
+            Compare
+          </Link>
+          <Link
+            href="/playground"
+            className="text-blue-600 font-semibold"
+            onClick={() => setMenuOpen(false)}
+          >
             Playground
           </Link>
         </div>
@@ -284,7 +293,12 @@ export default function LandingPage() {
       {/* ── INTERACTIVE CODE SECTION ── */}
       <section className="py-24 px-6 bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Developer Experience First
             </h2>
@@ -306,7 +320,12 @@ export default function LandingPage() {
       {/* ── 3. CORE FEATURES ── */}
       <section id="features" className="py-24 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Everything you need. Nothing you don&apos;t.
             </h2>
@@ -374,7 +393,12 @@ export default function LandingPage() {
       {/* ── 4. HOW IT WORKS / DIAGRAM ── */}
       <section id="how-it-works" className="py-24 px-6 bg-white border-y border-gray-200/50">
         <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">How it works</h2>
             <p className="mt-4 text-gray-500 text-lg">
               A simple, powerful data flow entirely in the browser.
@@ -435,7 +459,12 @@ export default function LandingPage() {
       {/* ── 5. PERFORMANCE BENCHMARKS ── */}
       <section className="py-24 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Unbeatable Latency
             </h2>
@@ -516,7 +545,12 @@ export default function LandingPage() {
       {/* ── 6. COMPARISON SECTION ── */}
       <section id="compare" className="py-24 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">
               The Modern Data Layer
             </h2>
@@ -597,7 +631,12 @@ export default function LandingPage() {
       {/* ── 7. USE CASES ── */}
       <section id="use-cases" className="py-24 px-6 bg-white border-t border-gray-100">
         <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
               Built for the next generation of apps
             </h2>
@@ -711,10 +750,10 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 flex items-center justify-center">
               <img
-                    src="/logo.svg"
-                    alt="ZerithDB Logo"
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                  />
+                src="/logo.svg"
+                alt="ZerithDB Logo"
+                className="w-8 h-8 md:w-10 md:h-10 object-contain"
+              />
             </div>
             <span className="font-semibold text-gray-900 text-lg">ZerithDB</span>
           </div>
