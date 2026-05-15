@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { RootLayoutClient } from "./layout-client";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,24 +19,11 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>){
-
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-  };
-
+}>) {
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-background text-foreground font-sans antialiased selection:bg-accent/20 selection:text-accent">
-
-        <button
-          onClick={toggleTheme}
-          className="fixed top-4 right-4 z-50 rounded-md border border-border bg-muted px-4 py-2 text-sm"
-        >
-          Toggle Theme
-        </button>
-
-        {children}
+        <RootLayoutClient>{children}</RootLayoutClient>
       </body>
     </html>
   );
