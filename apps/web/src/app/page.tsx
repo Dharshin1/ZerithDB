@@ -174,7 +174,10 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-tight text-gray-900 break-words px-2 sm:px-0">
+          <h1
+            className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight 
+          leading-tight text-gray-900 break-words px-2 sm:px-0"
+          >
             Build full-stack apps with <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
               ZERO backend.
