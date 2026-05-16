@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export function RootLayoutClient({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState(false);
